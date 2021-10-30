@@ -1,0 +1,76 @@
+#include <iostream>
+using namespace std;
+void print_array(int array[], const int size) {
+	for (int i = 0; i < size; i++) {
+		cout << array[i] << " ";
+	}
+	return;
+}
+void one() {
+	int size, first, d;
+	cout << "Введите размер массива, первый член арифметической прогресии и разность" << endl;
+	cin >> size >> first >> d;
+	int* array = new int[size];
+	for (int i = 0; i < size; i++) {
+		if (i == 0) {
+			array[i] = first;
+		}
+		else {
+			array[i] = array[i - 1] + d;
+		}
+	}
+	print_array(array, size);
+}
+void two() {
+	int size;
+	cout << "Введите размер массива" << endl;
+	cin >> size;
+	int* array = new int[size];
+	for (int i = 0; i < size; i++) {
+		array[i] = i + 1;
+	}
+	int num, znach;
+	for (int i = 0; i < size; i++) {
+		znach = array[i];
+		num = rand() % size + 1;
+		array[i] = array[num];
+		array[num] = znach;
+	}
+	print_array(array, size);
+}
+void three() {
+	int size;
+	cout << "Введите размер массива" << endl;
+	cin >> size;
+	int* array = new int[size];
+	for (int i = 0; i < size; i++) {
+		array[i] = rand() % 1001 + 1000;
+	}
+	int count = 0;
+	for (int i = 0; i < size; i++) {
+		if (array[i] / 10 % 2 == 0) {
+			count++;
+		}
+		
+	}
+	print_array(array, size);
+	cout << count;
+}
+int main() {
+	setlocale(LC_ALL, "Russian");
+	int n;
+	cout << "введите номер задания" << endl;
+	cin >> n;
+	if (n == 1) {
+		one();
+	}
+	if (n == 2) {
+		two();
+	}
+	if (n == 3) {
+		three();
+
+	}
+	system("pause");
+	return 0;
+}
